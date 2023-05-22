@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import { Collapse, Checkbox, List, ListItem, ListItemText } from '@material-ui/core';
-import { ExpandLess, ExpandMore } from '@material-ui/icons';
+import { Collapse, Checkbox, List, ListItem, ListItemText } from '@mui/material';
+import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import styled from 'styled-components';
 
 import './CheckboxFacet.css';
@@ -12,15 +12,15 @@ export default function CheckboxFacet(props) {
     const checkboxes = props.values.map(facetValue => {
 
         let isSelected = props.selectedFacets.some(facet => facet.value === facetValue.value);
-        
+
         return (
             <FacetValueListItem dense disableGutters id={facetValue.value}>
-                <Checkbox 
-                    edge="start" 
-                    disableRipple 
+                <Checkbox
+                    edge="start"
+                    disableRipple
                     checked={isSelected}
                     onClick= {
-                        isSelected ? 
+                        isSelected ?
                         () => props.removeFilter({field: props.name, value: facetValue.value}) :
                         () => props.addFilter(props.name, facetValue.value)
                     }
@@ -34,7 +34,7 @@ export default function CheckboxFacet(props) {
     return (
         <div>
             <FacetListItem disableRipple={true} button onClick={() => setIsExpanded(!isExpanded)}>
-                <ListItemText 
+                <ListItemText
                     primary={props.mapFacetName(props.name)}
                 />
                 {isExpanded ? <ExpandLess /> : <ExpandMore />}

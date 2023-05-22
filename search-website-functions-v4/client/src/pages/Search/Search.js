@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import CircularProgress  from '@material-ui/core/CircularProgress';
+import CircularProgress  from '@mui/material/CircularProgress';
 import { useLocation, useNavigate } from "react-router-dom";
 
 import Results from '../../components/Results/Results';
@@ -11,10 +11,10 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import "./Search.css";
 
 export default function Search() {
-  
+
   let location = useLocation();
   const navigate = useNavigate();
-  
+
   const [ results, setResults ] = useState([]);
   const [ resultCount, setResultCount ] = useState(0);
   const [ currentPage, setCurrentPage ] = useState(1);
@@ -26,7 +26,7 @@ export default function Search() {
   const [ isLoading, setIsLoading ] = useState(true);
 
   let resultsPerPage = top;
-  
+
   useEffect(() => {
     setIsLoading(true);
     setSkip((currentPage-1) * top);
@@ -49,13 +49,13 @@ export default function Search() {
             console.log(error);
             setIsLoading(false);
         });
-    
+
   }, [q, top, skip, filters, currentPage]);
 
   // pushing the new search term to history when q is updated
   // allows the back button to work as expected when coming back from the details page
   useEffect(() => {
-    navigate('/search?q=' + q);  
+    navigate('/search?q=' + q);
     setCurrentPage(1);
     setFilters([]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -84,7 +84,7 @@ export default function Search() {
 
   return (
     <main className="main main--search container-fluid">
-      
+
       <div className="row">
         <div className="col-md-3">
           <div className="search-bar">

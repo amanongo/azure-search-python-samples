@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Chip } from '@material-ui/core';
+import { List, Chip } from '@mui/material';
 import CheckboxFacet from './CheckboxFacet/CheckboxFacet';
 import styled from 'styled-components';
 import "./Facets.css";
@@ -21,7 +21,7 @@ export default function Facets(props) {
         props.setFilters(newFilters);
     }
 
-    function removeFilter(filter) {      
+    function removeFilter(filter) {
         const newFilters = props.filters.filter((item) => item.value !== filter.value);
         props.setFilters(newFilters);
     }
@@ -29,9 +29,9 @@ export default function Facets(props) {
     var facets;
     try{
         facets = Object.keys(props.facets).map(key => {
-            return <CheckboxFacet 
+            return <CheckboxFacet
                 key={key}
-                name={key} 
+                name={key}
                 values={props.facets[key]}
                 addFilter={addFilter}
                 removeFilter={removeFilter}
@@ -46,8 +46,8 @@ export default function Facets(props) {
     const filters = props.filters.map((filter, index) => {
             return (
             <li key={index}>
-                <Chip 
-                    label={`${mapFacetName(filter.field)}: ${filter.value}`} 
+                <Chip
+                    label={`${mapFacetName(filter.field)}: ${filter.value}`}
                     onDelete={() => removeFilter(filter)}
                     className="chip"
               />
@@ -65,7 +65,7 @@ export default function Facets(props) {
                 </div>
                 <FacetList component="nav" className="listitem" >
                     {facets}
-                </FacetList>    
+                </FacetList>
             </div>
         </div>
     );
